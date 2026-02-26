@@ -13,13 +13,13 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f'✅ Logged in as {client.user}')
+    # flush=True forces GitHub to show us the log immediately
+    print(f'✅ Logged in as {client.user}', flush=True)
     
-    # 1. Find the #general channel
-    channel = client.get_channel(CHANNEL_ID)
-    
-    if channel:
-        print("📡 Transmitting Valco Daily Report...")
+    try:
+        # fetch_channel is bulletproof: it forces the bot to find it right now
+        channel = await client.fetch_channel(CHANNEL_ID)
+        print("📡 Transmitting Valco Daily Report...", flush=True)
         
         # --- THE HEAVY HITTERS REPORT ---
         top_players = [
@@ -48,12 +48,13 @@ async def on_ready():
         embed2.set_footer(text="Check the 'Inactivity Radar' tab on Tableau for details.")
         await channel.send(embed=embed2)
         
-        print("✅ Transmission complete.")
-    else:
-        print(f"❌ Error: Could not find channel {CHANNEL_ID}.")
+        print("✅ Transmission complete.", flush=True)
+        
+    except Exception as e:
+        print(f"❌ Error during transmission: {e}", flush=True)
 
-    # 2. THE MOST IMPORTANT PART: Tell the bot to go to sleep so GitHub can finish!
-    print("🌙 Shutting down the bot engine...")
+    # Clean shutdown
+    print("🌙 Shutting down the bot engine...", flush=True)
     await client.close()
 
 client.run(TOKEN)
