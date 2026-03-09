@@ -1,6 +1,13 @@
+⚔️ VALCO Command Center
+A high-level strategic dashboard engineered to optimize competitive clan performance by analyzing real-time combat metrics.
 
-# 🛡️ VALCO Clan Command Center: Data Pipeline & Analytics
-The VALCO Command Center is a high-level strategic tool built to optimize clan performance in World of Tanks. By automating data extraction from the Wargaming API, this dashboard provides real-time insights into player activity, combat effectiveness, and recruitment needs, ensuring the VALCO clan remains a dominant force on the battlefield.
+Engineering Highlights:
+
+Automated Data Pipelines: Engineered automated extraction scripts to pull live telemetry directly from the Wargaming REST API.
+
+Real-Time Analytics: Processes and transforms unstructured API payloads into a centralized, real-time dashboard for immediate strategic decision-making.
+
+Tech Stack: Jupyter Notebooks, Python, REST API Integration, Data Visualization.
 
 ![Valco Dashboard](valco%20dashboard.png)
 
